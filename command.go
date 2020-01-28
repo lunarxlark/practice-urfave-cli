@@ -8,33 +8,37 @@ import (
 )
 
 var commands = []*cli.Command{
-	{
-		Name:      "foo",
-		Aliases:   []string{"f"},
-		Usage:     "usage of foo",
-		UsageText: "what is different between Usage and UsageText",
-		Action:    cmdFoo,
-		Flags: []cli.Flag{
-			&cli.IntFlag{
-				Name: "x",
-			},
-		},
-	},
-	{
-		Name:      "bar",
-		Aliases:   []string{"b"},
-		Usage:     "usage of bar",
-		UsageText: "what is different between Usage and UsageText",
-		Action:    cmdBar,
-		Flags: []cli.Flag{
-			&cli.IntFlag{
-				Name: "y",
-			},
+	cmdFoo,
+	cmdBar,
+}
+
+var cmdFoo = &cli.Command{
+	Name:      "foo",
+	Aliases:   []string{"f"},
+	Usage:     "usage of foo",
+	UsageText: "what is different between Usage and UsageText",
+	Action:    doFoo,
+	Flags: []cli.Flag{
+		&cli.IntFlag{
+			Name: "x",
 		},
 	},
 }
 
-func cmdFoo(ctx *cli.Context) error {
+var cmdBar = &cli.Command{
+	Name:      "bar",
+	Aliases:   []string{"b"},
+	Usage:     "usage of bar",
+	UsageText: "what is different between Usage and UsageText",
+	Action:    doBar,
+	Flags: []cli.Flag{
+		&cli.IntFlag{
+			Name: "y",
+		},
+	},
+}
+
+func doFoo(ctx *cli.Context) error {
 	if ctx.Int("x") == 0 {
 		return errors.New("x is not specified")
 	}
@@ -50,7 +54,7 @@ func cmdFoo(ctx *cli.Context) error {
 	return nil
 }
 
-func cmdBar(ctx *cli.Context) error {
+func doBar(ctx *cli.Context) error {
 	fmt.Println("bar")
 	return nil
 }
