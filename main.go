@@ -7,21 +7,6 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var commands = []*cli.Command{
-	{
-		Name:      "foo",
-		Aliases:   []string{"f"},
-		Usage:     "usage of foo",
-		UsageText: "what is different between Usage and UsageText",
-	},
-	{
-		Name:      "bar",
-		Aliases:   []string{"b"},
-		Usage:     "usage of bar",
-		UsageText: "what is different between Usage and UsageText",
-	},
-}
-
 var exitCode int
 
 func main() {
