@@ -39,6 +39,7 @@ func newApp() *cli.App {
 	app.Before = before
 	app.After = after
 	app.Commands = commands
+
 	return app
 }
 
