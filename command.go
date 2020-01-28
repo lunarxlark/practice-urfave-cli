@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/urfave/cli/v2"
@@ -12,23 +13,44 @@ var commands = []*cli.Command{
 		Aliases:   []string{"f"},
 		Usage:     "usage of foo",
 		UsageText: "what is different between Usage and UsageText",
-		Action:    foo,
+		Action:    cmdFoo,
+		Flags: []cli.Flag{
+			&cli.IntFlag{
+				Name: "x",
+			},
+		},
 	},
 	{
 		Name:      "bar",
 		Aliases:   []string{"b"},
 		Usage:     "usage of bar",
 		UsageText: "what is different between Usage and UsageText",
-		Action:    bar,
+		Action:    cmdBar,
+		Flags: []cli.Flag{
+			&cli.IntFlag{
+				Name: "y",
+			},
+		},
 	},
 }
 
-func foo(ctx *cli.Context) error {
-	fmt.Println("foo")
+func cmdFoo(ctx *cli.Context) error {
+	if ctx.Int("x") == 0 {
+		return errors.New("x is not specified")
+	}
+	x := ctx.Int("x")
+	for i := 1; i <= 10; i++ {
+		switch i % x {
+		case 0:
+			fmt.Println("foo")
+		default:
+			fmt.Println(i)
+		}
+	}
 	return nil
 }
 
-func bar(ctx *cli.Context) error {
+func cmdBar(ctx *cli.Context) error {
 	fmt.Println("bar")
 	return nil
 }

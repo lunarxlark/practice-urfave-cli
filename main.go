@@ -9,6 +9,8 @@ import (
 
 var exitCode int
 
+var version = "0.0.1"
+
 func main() {
 	if err := newApp().Run(os.Args); err != nil {
 		fmt.Println(err.Error())
@@ -19,9 +21,9 @@ func main() {
 
 func newApp() *cli.App {
 	app := cli.NewApp()
-	app.Name = "practice"
+	app.Name = "practice-urfave-cli"
 	app.Usage = "test of cli building by urfave/cli"
-	app.Version = "0.0.1" // I love semantic version
+	app.Version = version // I love semantic version
 	app.Authors = []*cli.Author{
 		{
 			Name:  "foobar",

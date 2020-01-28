@@ -1,4 +1,4 @@
-module github.com/lunarxlark/urfave-practice
+module github.com/lunarxlark/practice-urfave-cli
 
 go 1.13
 
