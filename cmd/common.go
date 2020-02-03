@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"errors"
@@ -7,7 +7,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var commands = []*cli.Command{
+var Commands = []*cli.Command{
 	cmdFoo,
 	cmdBar,
 }

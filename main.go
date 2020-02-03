@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/lunarxlark/practice-urfave-cli/cmd"
 	"github.com/urfave/cli/v2"
 )
 
@@ -38,7 +39,7 @@ func newApp() *cli.App {
 	app.UsageText = "what is different between Usage and UsageText?"
 	app.Before = before
 	app.After = after
-	app.Commands = commands
+	app.Commands = cmd.Commands
 
 	return app
 }
